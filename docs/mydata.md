@@ -62,7 +62,7 @@ Currently building (small "In development" strip, not full cards):
    - AI-Powered Career Guidance & Placement Preparation System (Python Flask, SQLite/MySQL)
    - Firebase File Transfer Utility (Firebase Auth, Storage, Firestore)
 
-## Services (5, in order; no prices, no turnaround promises)
+## Services (6, in order; no prices, no turnaround promises)
 01 UI/UX Design — Clean, user-focused interfaces, wireframes and prototypes that look good and are easy to use.
 02 Website Development — Fast, responsive websites and landing pages built with modern HTML, CSS, JavaScript and React.
 03 Web Apps & Firebase — Dashboards, authentication, databases and file storage using Firebase.
