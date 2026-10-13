@@ -18,9 +18,9 @@ export const projectsData: ProjectItem[] = [
     description: "AI-powered study planner: dashboard, subjects & exams, timetable, progress, quizzes, AI insights, smart notes, reminders and an AI study assistant. Tasks auto-complete when the related quiz is passed.",
     stack: ["HTML", "CSS", "JavaScript", "Firebase", "AI API"],
     images: [
-      "/images/projects/eduskills/1.webp",
-      "/images/projects/eduskills/2.webp",
-      "/images/projects/eduskills/3.webp"
+      "/images/projects/eduskills/1.png",
+      "/images/projects/eduskills/2.png",
+      "/images/projects/eduskills/3.png"
     ]
   },
   {
@@ -36,9 +36,9 @@ export const projectsData: ProjectItem[] = [
     description: "Responsive restaurant website with filterable menu, cart-to-WhatsApp ordering, table reservation form with validation, offers and gallery. Concept demo to showcase capabilities for business clients.",
     stack: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
     images: [
-      "/images/projects/spice-haven/1.webp",
-      "/images/projects/spice-haven/2.webp",
-      "/images/projects/spice-haven/3.webp"
+      "/images/projects/spice-haven/1.png",
+      "/images/projects/spice-haven/2.png",
+      "/images/projects/spice-haven/3.png"
     ]
   },
   {
@@ -53,9 +53,9 @@ export const projectsData: ProjectItem[] = [
     description: "An online platform for sharing important circulars, announcements and notices with students and staff. It reduces paper usage, saves time by making information easily accessible online, and helps educational institutions communicate updates quickly, efficiently and conveniently.",
     stack: ["HTML", "CSS", "JavaScript"],
     images: [
-      "/images/projects/smart-classroom/1.webp",
-      "/images/projects/smart-classroom/2.webp",
-      "/images/projects/smart-classroom/3.webp"
+      "/images/projects/smart-classroom/1.png",
+      "/images/projects/smart-classroom/2.png",
+      "/images/projects/smart-classroom/3.png"
     ]
   },
   {
@@ -69,9 +69,9 @@ export const projectsData: ProjectItem[] = [
     description: "Simulated college network designed in Cisco Packet Tracer to practice topology design and TCP/IP concepts.",
     stack: ["Cisco Packet Tracer", "TCP/IP", "Network Topology"],
     images: [
-      "/images/projects/smart-college-network/1.webp",
-      "/images/projects/smart-college-network/2.webp",
-      "/images/projects/smart-college-network/3.webp"
+      "/images/projects/smart-college-network/1.png",
+      "/images/projects/smart-college-network/2.png",
+      "/images/projects/smart-college-network/3.png"
     ]
   },
   {
@@ -86,9 +86,9 @@ export const projectsData: ProjectItem[] = [
     description: "First iteration personal developer portfolio featuring GSAP animations and responsive design.",
     stack: ["HTML", "CSS", "JavaScript", "GSAP", "GitHub Pages"],
     images: [
-      "/images/projects/portfolio-v1/1.webp",
-      "/images/projects/portfolio-v1/2.webp",
-      "/images/projects/portfolio-v1/3.webp"
+      "/images/projects/portfolio-v1/1.png",
+      "/images/projects/portfolio-v1/2.png",
+      "/images/projects/portfolio-v1/3.png"
     ]
   }
 ];
