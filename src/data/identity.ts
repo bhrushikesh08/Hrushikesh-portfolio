@@ -19,5 +19,8 @@ export const identityData: IdentityData = {
   heroCtaPrimary: "Contact Me",
   heroCtaSecondary: "View Projects",
   heroScrollText: "Scroll to explore",
-  navCta: "Let's Talk"
+  navCta: "Let's Talk",
+  aboutEyebrow: "About Me",
+  aboutTitle: "Bridging Design, Code & Intelligence",
+  aboutCta: "Contact Me"
 };

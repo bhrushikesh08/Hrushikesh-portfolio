@@ -12,6 +12,9 @@ export interface IdentityData {
   heroCtaSecondary: string;
   heroScrollText: string;
   navCta: string;
+  aboutEyebrow: string;
+  aboutTitle: string;
+  aboutCta: string;
 }
 
 export interface ContactData {
