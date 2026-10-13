@@ -97,7 +97,16 @@ interface MarqueeCardProps {
 }
 
 const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
+  const [currentSrc, setCurrentSrc] = React.useState<string>(tile.imageSrc);
   const targetUrl = tile.liveUrl || tile.repoUrl || '#projects';
+
+  const handleError = () => {
+    if (currentSrc.endsWith('.webp')) {
+      setCurrentSrc(currentSrc.replace('.webp', '.png'));
+    } else if (currentSrc.endsWith('.png')) {
+      setCurrentSrc(currentSrc.replace('.png', '.jpg'));
+    }
+  };
 
   return (
     <a
@@ -108,11 +117,12 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
     >
       {/* Background Graphic / Screenshot */}
       <img
-        src={tile.imageSrc}
+        src={currentSrc}
         alt={tile.altText}
         width={420}
         height={270}
         loading="lazy"
+        onError={handleError}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
