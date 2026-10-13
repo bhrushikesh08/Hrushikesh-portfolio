@@ -1,5 +1,10 @@
 import { ProjectItem, InDevelopmentItem } from '../types';
 
+export const marqueeMeta = {
+  eyebrow: "Selected Work Previews",
+  title: "Featured Creations",
+};
+
 export const projectsData: ProjectItem[] = [
   {
     number: "01",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
+import { Marquee } from '@/components/sections/Marquee';
 
 export const App: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ export const App: React.FC = () => {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <Marquee />
       </main>
     </div>
   );
