@@ -1,5 +1,11 @@
 import { EducationItem } from '../types';
 
+export const educationMeta = {
+  eyebrow: "Academic Background",
+  title: "Education",
+  subtitle: "Computer engineering foundations and academic performance milestones.",
+};
+
 export const educationData: EducationItem[] = [
   {
     degree: "Diploma in Computer Engineering",

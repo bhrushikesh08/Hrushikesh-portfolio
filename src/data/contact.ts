@@ -1,5 +1,20 @@
 import { ContactData } from '../types';
 
+export const contactMeta = {
+  eyebrow: "Get In Touch",
+  title: "Let's talk",
+  subtitle: "Interested in collaborating, hiring for freelance projects, or discussing an innovative product idea? Reach out directly.",
+  emailLabel: "Send an Email",
+  whatsappLabel: "WhatsApp Message",
+  linkedinLabel: "LinkedIn Profile",
+  githubLabel: "GitHub Profile",
+  resumeLabel: "Download Resume",
+  callLabel: "Direct Call",
+  locationLabel: "Rayadurg, Andhra Pradesh, India",
+  footerCopyright: "© 2026 B. Padma Hrushikesh. Built with Vite, React & Framer Motion.",
+  footerTagline: "Web Developer · UI/UX Designer · Vibecoder",
+};
+
 export const contactData: ContactData = {
   email: "bheemanapallih@gmail.com",
   github: "https://github.com/bhrushikesh08",
