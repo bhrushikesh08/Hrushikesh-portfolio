@@ -8,6 +8,10 @@ export interface IdentityData {
   location: string;
   availability: string;
   aboutCopy: string;
+  heroCtaPrimary: string;
+  heroCtaSecondary: string;
+  heroScrollText: string;
+  navCta: string;
 }
 
 export interface ContactData {
