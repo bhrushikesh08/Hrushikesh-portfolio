@@ -1,5 +1,11 @@
 import { SkillCategory } from '../types';
 
+export const skillsMeta = {
+  eyebrow: "Toolbox & Expertise",
+  title: "Skills & Technologies",
+  subtitle: "Technical competencies honed through real projects, active development, and academic engineering.",
+};
+
 export const skillsData: SkillCategory[] = [
   {
     category: "Design",

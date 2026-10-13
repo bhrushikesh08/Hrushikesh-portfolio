@@ -46,6 +46,12 @@ body {
   background-clip: text;
 }
 
+/* Performance: content-visibility for off-screen sections */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -56,4 +62,11 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Smooth focus outline for accessibility */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
