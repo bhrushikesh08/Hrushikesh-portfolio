@@ -70,11 +70,8 @@ Currently building (small "In development" strip, not full cards):
 05 AI-Powered Features — Adding AI assistants, study/quiz tools and smart recommendations to web apps through AI APIs.
 06 Startup Promotion & Digital Presence — Promoting small startups with high-impact websites, web apps, and digital market platform solutions to grow their business.
 
-## Achievements (SHOW as a small section after Education)
-- Ball Badminton 1st Prize (Diploma 4th Sem, 2025)
-- School Shuttle Gold Medalist (8th–10th grade)
-- IBM SkillsBuild Internship participant (certificate PDF)
-- Elected Class Representative
+## Achievements
+<!-- Achievements removed per request -->
 
 ## SEO
 - Title: Hrushikesh -- Web Developer & UI/UX Designer
