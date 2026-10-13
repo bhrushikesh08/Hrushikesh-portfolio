@@ -5,6 +5,14 @@ export const marqueeMeta = {
   title: "Featured Creations",
 };
 
+export const projectsMeta = {
+  eyebrow: "Featured Portfolio",
+  title: "Selected Projects",
+  subtitle: "Interactive web applications, AI platforms, and production systems crafted with precision.",
+  inDevelopmentEyebrow: "R&D Pipeline",
+  inDevelopmentTitle: "Currently Building",
+};
+
 export const projectsData: ProjectItem[] = [
   {
     number: "01",

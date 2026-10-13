@@ -4,6 +4,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Marquee } from '@/components/sections/Marquee';
 import { About } from '@/components/sections/About';
 import { Services } from '@/components/sections/Services';
+import { Projects } from '@/components/sections/Projects';
 
 export const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
         <Marquee />
         <About />
         <Services />
+        <Projects />
       </main>
     </div>
   );
