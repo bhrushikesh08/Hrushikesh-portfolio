@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Marquee } from '@/components/sections/Marquee';
 import { About } from '@/components/sections/About';
+import { Services } from '@/components/sections/Services';
 
 export const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const App: React.FC = () => {
         <Hero />
         <Marquee />
         <About />
+        <Services />
       </main>
     </div>
   );

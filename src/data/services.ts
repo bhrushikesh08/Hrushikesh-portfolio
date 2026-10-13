@@ -1,5 +1,12 @@
 import { ServiceItem } from '../types';
 
+export const servicesMeta = {
+  eyebrow: "Capabilities & Offerings",
+  title: "Services",
+  subtitle: "Specialized engineering & design services built for distinct digital products and fast-growing startups.",
+  ctaText: "Start a Conversation",
+};
+
 export const servicesData: ServiceItem[] = [
   {
     number: "01",
