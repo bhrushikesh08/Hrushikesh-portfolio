@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hrushikesh.dev/sitemap.xml
+Sitemap: https://hrushikesh-portfolio-hr.vercel.app/sitemap.xml
