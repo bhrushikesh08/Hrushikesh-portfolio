@@ -3,12 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting…</title>
-    <script>
-      // SPA redirect for GitHub Pages / static hosts
-      // Redirects 404s back to index.html so the client-side app can handle routing
-      window.location.replace(window.location.origin + '/#' + window.location.pathname);
-    </script>
+    <title>404 — Page Not Found | Hrushikesh</title>
+    <meta name="theme-color" content="#0C0C0C" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #0C0C0C;
+        color: #FFFFFF;
+        font-family: 'Kanit', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 1.5rem;
+        overflow: hidden;
+      }
+      .container {
+        max-width: 480px;
+        position: relative;
+        z-index: 10;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        background: rgba(244, 63, 94, 0.1);
+        border: 1px solid rgba(244, 63, 94, 0.25);
+        color: #fb7185;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        font-size: clamp(6rem, 18vw, 10rem);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 60%, #52525B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        color: #A1A1AA;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.75rem;
+        border-radius: 9999px;
+        background: #FFFFFF;
+        color: #000000;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: background-color 0.2s, transform 0.2s;
+      }
+      a.btn:hover {
+        background: #E4E4E7;
+        transform: translateY(-2px);
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <span class="badge">Invalid Address</span>
+      <h1>404</h1>
+      <h2>Page or Section Not Found</h2>
+      <p>The requested page or section does not exist or has an unverified URL link.</p>
+      <a href="/" class="btn">&larr; Back to Home</a>
+    </div>
+  </body>
 </html>

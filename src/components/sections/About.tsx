@@ -1,6 +1,17 @@
+
 import React, { useState } from 'react';
-import { Sparkles, Code2, Layout, Zap } from 'lucide-react';
-import { identityData } from '@/data';
+import {
+  Sparkles,
+  Code2,
+  Layout,
+  Zap,
+  Building2,
+  Briefcase,
+  MapPin,
+  Mail,
+  GraduationCap,
+} from 'lucide-react';
+import { identityData, aboutDetails } from '@/data';
 import { FadeIn, Magnet, AnimatedText } from '@/components/motion';
 import { Heading, ContactButton } from '@/components/ui';
 
@@ -59,6 +70,25 @@ const CornerBadge: React.FC<CornerBadgeProps> = ({
   );
 };
 
+const getDetailIcon = (iconName: string) => {
+  switch (iconName) {
+    case 'Briefcase':
+      return <Briefcase className="w-4 h-4 text-indigo-400" />;
+    case 'MapPin':
+      return <MapPin className="w-4 h-4 text-rose-400" />;
+    case 'Mail':
+      return <Mail className="w-4 h-4 text-emerald-400" />;
+    case 'Sparkles':
+      return <Sparkles className="w-4 h-4 text-amber-400" />;
+    case 'GraduationCap':
+      return <GraduationCap className="w-4 h-4 text-cyan-400" />;
+    case 'Building2':
+      return <Building2 className="w-4 h-4 text-amber-400" />;
+    default:
+      return <Briefcase className="w-4 h-4 text-zinc-400" />;
+  }
+};
+
 export const About: React.FC = () => {
   return (
     <section
@@ -76,8 +106,18 @@ export const About: React.FC = () => {
           subtitle={identityData.aboutEyebrow}
           gradient
           align="center"
-          className="mb-12 sm:mb-16"
+          className="mb-6"
         />
+
+        {/* Prominent Role Badge: Co-Founder of HM Technologies */}
+        <FadeIn direction="up" delay={0.1}>
+          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/15 via-white/5 to-amber-500/15 border border-amber-500/30 text-amber-300 shadow-lg shadow-amber-500/5 mb-10 sm:mb-12">
+            <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="text-xs sm:text-sm font-kanit font-semibold uppercase tracking-wider">
+              {identityData.prominentRole}
+            </span>
+          </div>
+        </FadeIn>
 
         {/* Central Card with Corner Floating Badges (Desktop) */}
         <div className="relative w-full max-w-4xl py-12 px-6 sm:px-16 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-sm">
@@ -177,8 +217,43 @@ export const About: React.FC = () => {
           />
         </div>
 
+        {/* About Details Grid with Icons (Role, Location, Email, Experience, Education) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-10 w-full max-w-4xl text-left">
+          {aboutDetails.map((detail, idx) => (
+            <FadeIn
+              key={detail.label}
+              direction="up"
+              delay={0.2 + idx * 0.05}
+              className="h-full"
+            >
+              <div className="p-4 rounded-2xl bg-zinc-950/60 border border-white/10 backdrop-blur-xl flex items-center gap-3.5 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-300 h-full group">
+                <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform shrink-0">
+                  {getDetailIcon(detail.iconName)}
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[11px] font-kanit uppercase tracking-wider text-zinc-400 font-medium">
+                    {detail.label}
+                  </span>
+                  {detail.href ? (
+                    <a
+                      href={detail.href}
+                      className="text-xs sm:text-sm font-kanit font-semibold text-white hover:text-indigo-300 transition-colors truncate focus:outline-none focus:ring-1 focus:ring-white/40 rounded"
+                    >
+                      {detail.value}
+                    </a>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-kanit font-semibold text-white truncate">
+                      {detail.value}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
         {/* Bottom CTA to Contact section */}
-        <FadeIn direction="up" delay={0.5} className="mt-14 sm:mt-16">
+        <FadeIn direction="up" delay={0.5} className="mt-12 sm:mt-14">
           <ContactButton
             href="#contact"
             text={identityData.aboutCta}

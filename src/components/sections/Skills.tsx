@@ -1,8 +1,21 @@
 import React from 'react';
+import { motion, useReducedMotion, Variants } from 'framer-motion';
+
 import { skillsData, skillsMeta } from '@/data';
 import { Heading } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
-import { Code, Terminal, Server, Cpu, Smartphone, Database, Network, Wrench, Palette, Globe } from 'lucide-react';
+import {
+  Code,
+  Terminal,
+  Server,
+  Cpu,
+  Smartphone,
+  Database,
+  Network,
+  Wrench,
+  Palette,
+  Globe,
+} from 'lucide-react';
 
 const getCategoryIcon = (category: string) => {
   switch (category.toLowerCase()) {
@@ -30,7 +43,32 @@ const getCategoryIcon = (category: string) => {
   }
 };
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+
 export const Skills: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="skills"
@@ -51,40 +89,65 @@ export const Skills: React.FC = () => {
         </FadeIn>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillsData.map((category, idx) => (
-          <FadeIn
+      <motion.div
+        variants={shouldReduceMotion ? undefined : containerVariants}
+        initial={shouldReduceMotion ? undefined : 'hidden'}
+        whileInView={shouldReduceMotion ? undefined : 'visible'}
+        viewport={{ once: true, margin: '-40px' }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {skillsData.map((category) => (
+          <motion.div
             key={category.category}
-            direction="up"
-            delay={idx * 0.05}
-            className="h-full"
+            variants={shouldReduceMotion ? undefined : cardVariants}
+            whileHover={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    y: -4,
+                    scale: 1.01,
+                    boxShadow:
+                      '0 12px 30px -10px rgba(0,0,0,0.8), 0 0 24px 0 rgba(255,255,255,0.06)',
+                  }
+            }
+            transition={{ duration: 0.25 }}
+            className="h-full rounded-3xl p-6 sm:p-7 bg-zinc-950/60 border border-white/10 backdrop-blur-xl transition-colors duration-300 hover:border-white/25 hover:bg-zinc-900/60 flex flex-col justify-between gap-6 group"
           >
-            <div className="h-full rounded-3xl p-6 sm:p-7 bg-zinc-950/60 border border-white/10 backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-zinc-900/60 flex flex-col justify-between gap-6 group">
-              <div>
-                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                    {getCategoryIcon(category.category)}
-                  </div>
-                  <h3 className="text-lg font-kanit font-bold uppercase tracking-wider text-white">
-                    {category.category}
-                  </h3>
+            <div>
+              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
+                <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-105 transition-transform">
+                  {getCategoryIcon(category.category)}
                 </div>
+                <h3 className="text-lg font-kanit font-bold uppercase tracking-wider text-white">
+                  {category.category}
+                </h3>
+              </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs font-kanit font-medium text-zinc-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl transition-all duration-300 group-hover:border-white/20 hover:!border-white/40 hover:!bg-white/10 hover:text-white"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <motion.span
+                    key={skill}
+                    whileHover={
+                      shouldReduceMotion
+                        ? undefined
+                        : {
+                            y: -2,
+                            scale: 1.05,
+                            boxShadow: '0 0 16px rgba(255, 255, 255, 0.2)',
+                            borderColor: 'rgba(255, 255, 255, 0.4)',
+                          }
+                    }
+                    transition={{ duration: 0.15 }}
+                    className="text-xs font-kanit font-medium text-zinc-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl transition-colors hover:bg-white/10 hover:text-white cursor-default"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
               </div>
             </div>
-          </FadeIn>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

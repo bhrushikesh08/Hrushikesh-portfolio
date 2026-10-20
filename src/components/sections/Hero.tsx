@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Sparkles, ChevronDown, Code, Laptop } from 'lucide-react';
+import { MapPin, Sparkles, Code, Laptop } from 'lucide-react';
 import { identityData } from '@/data';
 import { FadeIn, Magnet, AnimatedText } from '@/components/motion';
 import { ContactButton } from '@/components/ui';
@@ -149,22 +149,6 @@ export const Hero: React.FC = () => {
           </FadeIn>
         </div>
       </div>
-
-      {/* Bottom Scroll Indicator */}
-      <FadeIn direction="up" delay={0.6}>
-        <div className="flex justify-center items-center pt-8">
-          <a
-            href="#projects"
-            className="group flex flex-col items-center gap-2 text-zinc-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 rounded p-1"
-            aria-label={identityData.heroScrollText}
-          >
-            <span className="text-xs uppercase tracking-[0.2em] font-medium font-kanit">
-              {identityData.heroScrollText}
-            </span>
-            <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1 animate-bounce" />
-          </a>
-        </div>
-      </FadeIn>
     </section>
   );
 };

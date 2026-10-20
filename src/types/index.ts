@@ -10,11 +10,18 @@ export interface IdentityData {
   aboutCopy: string;
   heroCtaPrimary: string;
   heroCtaSecondary: string;
-  heroScrollText: string;
   navCta: string;
   aboutEyebrow: string;
   aboutTitle: string;
   aboutCta: string;
+  prominentRole: string;
+}
+
+export interface AboutDetailItem {
+  label: string;
+  value: string;
+  iconName: 'MapPin' | 'Briefcase' | 'Mail' | 'Sparkles' | 'GraduationCap' | 'Building2';
+  href?: string;
 }
 
 export interface ContactData {
@@ -54,24 +61,8 @@ export interface ProjectItem {
   images: string[];
 }
 
-export interface InDevelopmentItem {
-  name: string;
-  stack: string[];
-}
-
-export type ServiceIconType = 'Palette' | 'Code2' | 'Flame' | 'Smartphone' | 'Sparkles' | 'Rocket';
-
-export interface ServiceItem {
-  number: string;
-  title: string;
-  description: string;
-  iconName: ServiceIconType;
-  highlights: string[];
-  tags: string[];
-  discussText: string;
-}
-
 export interface NavLink {
   label: string;
   href: string;
 }
+

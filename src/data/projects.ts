@@ -1,4 +1,4 @@
-import { ProjectItem, InDevelopmentItem } from '../types';
+import { ProjectItem } from '../types';
 
 export const marqueeMeta = {
   eyebrow: "Selected Work Previews",
@@ -9,8 +9,6 @@ export const projectsMeta = {
   eyebrow: "Featured Portfolio",
   title: "Selected Projects",
   subtitle: "Interactive web applications, AI platforms, and production systems crafted with precision.",
-  inDevelopmentEyebrow: "R&D Pipeline",
-  inDevelopmentTitle: "Currently Building",
 };
 
 export const projectsData: ProjectItem[] = [
@@ -101,13 +99,3 @@ export const projectsData: ProjectItem[] = [
   }
 ];
 
-export const inDevelopmentData: InDevelopmentItem[] = [
-  {
-    name: "AI-Powered Career Guidance & Placement Preparation System",
-    stack: ["Python Flask", "SQLite/MySQL"]
-  },
-  {
-    name: "Firebase File Transfer Utility",
-    stack: ["Firebase Auth", "Storage", "Firestore"]
-  }
-];
