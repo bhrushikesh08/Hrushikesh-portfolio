@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+
 import {
   Sparkles,
   Code2,
@@ -16,8 +17,7 @@ import { FadeIn, Magnet, AnimatedText } from '@/components/motion';
 import { Heading, ContactButton } from '@/components/ui';
 
 interface CornerBadgeProps {
-  imageSrc: string;
-  fallbackIcon: React.ReactNode;
+  icon: React.ReactNode;
   title: string;
   subtitle: string;
   positionClass: string;
@@ -26,34 +26,20 @@ interface CornerBadgeProps {
 }
 
 const CornerBadge: React.FC<CornerBadgeProps> = ({
-  imageSrc,
-  fallbackIcon,
+  icon,
   title,
   subtitle,
   positionClass,
   direction,
   delay,
 }) => {
-  const [imgError, setImgError] = useState(false);
-
   return (
     <div className={positionClass}>
       <FadeIn direction={direction} delay={delay}>
         <Magnet strength={0.3}>
           <div className="group relative flex items-center gap-3.5 px-4 py-3 rounded-2xl bg-zinc-900/80 border border-white/10 backdrop-blur-xl shadow-xl shadow-black/50 transition-all duration-300 hover:border-white/30 hover:bg-zinc-800/80 hover:scale-105">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-              {!imgError ? (
-                <img
-                  src={imageSrc}
-                  alt={title}
-                  width={40}
-                  height={40}
-                  onError={() => setImgError(true)}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              ) : null}
-              {imgError && fallbackIcon}
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              {icon}
             </div>
             <div className="flex flex-col text-left">
               <span className="text-xs font-kanit font-bold uppercase tracking-wider text-white">
@@ -123,8 +109,7 @@ export const About: React.FC = () => {
         <div className="relative w-full max-w-4xl py-12 px-6 sm:px-16 rounded-3xl bg-zinc-950/40 border border-white/5 backdrop-blur-sm">
           {/* Top Left Floating Badge */}
           <CornerBadge
-            imageSrc="/images/about/1.png"
-            fallbackIcon={<Code2 className="w-5 h-5 text-indigo-400" />}
+            icon={<Code2 className="w-5 h-5 text-indigo-400" />}
             title="Clean Architecture"
             subtitle="Modern Web & React"
             positionClass="hidden lg:block absolute -top-8 -left-8 z-20"
@@ -134,8 +119,7 @@ export const About: React.FC = () => {
 
           {/* Top Right Floating Badge */}
           <CornerBadge
-            imageSrc="/images/about/2.png"
-            fallbackIcon={<Sparkles className="w-5 h-5 text-amber-400" />}
+            icon={<Sparkles className="w-5 h-5 text-amber-400" />}
             title="Vibecoding"
             subtitle="AI Tool Direction"
             positionClass="hidden lg:block absolute -top-8 -right-8 z-20"
@@ -156,8 +140,7 @@ export const About: React.FC = () => {
 
           {/* Bottom Left Floating Badge */}
           <CornerBadge
-            imageSrc="/images/about/3.png"
-            fallbackIcon={<Layout className="w-5 h-5 text-cyan-400" />}
+            icon={<Layout className="w-5 h-5 text-cyan-400" />}
             title="UI/UX Craft"
             subtitle="Intuitive Interfaces"
             positionClass="hidden lg:block absolute -bottom-8 -left-8 z-20"
@@ -167,8 +150,7 @@ export const About: React.FC = () => {
 
           {/* Bottom Right Floating Badge */}
           <CornerBadge
-            imageSrc="/images/about/4.png"
-            fallbackIcon={<Zap className="w-5 h-5 text-emerald-400" />}
+            icon={<Zap className="w-5 h-5 text-emerald-400" />}
             title="Performance"
             subtitle="Fluid Motion & Speed"
             positionClass="hidden lg:block absolute -bottom-8 -right-8 z-20"
@@ -180,8 +162,7 @@ export const About: React.FC = () => {
         {/* Mobile / Tablet 2x2 Corner Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-8 w-full max-w-xl lg:hidden">
           <CornerBadge
-            imageSrc="/images/about/1.png"
-            fallbackIcon={<Code2 className="w-5 h-5 text-indigo-400" />}
+            icon={<Code2 className="w-5 h-5 text-indigo-400" />}
             title="Clean Architecture"
             subtitle="Modern Web & React"
             positionClass="w-full"
@@ -189,8 +170,7 @@ export const About: React.FC = () => {
             delay={0.2}
           />
           <CornerBadge
-            imageSrc="/images/about/2.png"
-            fallbackIcon={<Sparkles className="w-5 h-5 text-amber-400" />}
+            icon={<Sparkles className="w-5 h-5 text-amber-400" />}
             title="Vibecoding"
             subtitle="AI Tool Direction"
             positionClass="w-full"
@@ -198,8 +178,7 @@ export const About: React.FC = () => {
             delay={0.25}
           />
           <CornerBadge
-            imageSrc="/images/about/3.png"
-            fallbackIcon={<Layout className="w-5 h-5 text-cyan-400" />}
+            icon={<Layout className="w-5 h-5 text-cyan-400" />}
             title="UI/UX Craft"
             subtitle="Intuitive Interfaces"
             positionClass="w-full"
@@ -207,8 +186,7 @@ export const About: React.FC = () => {
             delay={0.3}
           />
           <CornerBadge
-            imageSrc="/images/about/4.png"
-            fallbackIcon={<Zap className="w-5 h-5 text-emerald-400" />}
+            icon={<Zap className="w-5 h-5 text-emerald-400" />}
             title="Performance"
             subtitle="Fluid Motion & Speed"
             positionClass="w-full"

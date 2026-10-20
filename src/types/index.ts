@@ -66,3 +66,16 @@ export interface NavLink {
   href: string;
 }
 
+export type ServiceIconType = 'Palette' | 'Code2' | 'Flame' | 'Smartphone' | 'Sparkles' | 'Rocket';
+
+export interface ServiceItem {
+  number: string;
+  title: string;
+  description: string;
+  iconName: ServiceIconType;
+  highlights: string[];
+  tags: string[];
+  discussText: string;
+}
+
+

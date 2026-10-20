@@ -1,6 +1,7 @@
 export const VALID_SECTION_IDS = [
   'hero',
   'about',
+  'services',
   'projects',
   'skills',
   'education',

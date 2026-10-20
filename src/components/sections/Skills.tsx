@@ -3,7 +3,7 @@ import { motion, useReducedMotion, Variants } from 'framer-motion';
 
 import { skillsData, skillsMeta } from '@/data';
 import { Heading } from '@/components/ui';
-import { FadeIn } from '@/components/motion';
+import { FadeIn, Magnet } from '@/components/motion';
 import {
   Code,
   Terminal,
@@ -65,7 +65,6 @@ const cardVariants: Variants = {
   },
 };
 
-
 export const Skills: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -97,55 +96,56 @@ export const Skills: React.FC = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {skillsData.map((category) => (
-          <motion.div
-            key={category.category}
-            variants={shouldReduceMotion ? undefined : cardVariants}
-            whileHover={
-              shouldReduceMotion
-                ? undefined
-                : {
-                    y: -4,
-                    scale: 1.01,
-                    boxShadow:
-                      '0 12px 30px -10px rgba(0,0,0,0.8), 0 0 24px 0 rgba(255,255,255,0.06)',
-                  }
-            }
-            transition={{ duration: 0.25 }}
-            className="h-full rounded-3xl p-6 sm:p-7 bg-zinc-950/60 border border-white/10 backdrop-blur-xl transition-colors duration-300 hover:border-white/25 hover:bg-zinc-900/60 flex flex-col justify-between gap-6 group"
-          >
-            <div>
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
-                <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-105 transition-transform">
-                  {getCategoryIcon(category.category)}
-                </div>
-                <h3 className="text-lg font-kanit font-bold uppercase tracking-wider text-white">
-                  {category.category}
-                </h3>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <motion.span
-                    key={skill}
-                    whileHover={
-                      shouldReduceMotion
-                        ? undefined
-                        : {
-                            y: -2,
-                            scale: 1.05,
-                            boxShadow: '0 0 16px rgba(255, 255, 255, 0.2)',
-                            borderColor: 'rgba(255, 255, 255, 0.4)',
-                          }
+          <Magnet key={category.category} strength={0.2} className="h-full">
+            <motion.div
+              variants={shouldReduceMotion ? undefined : cardVariants}
+              whileHover={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      scale: 1.02,
+                      boxShadow:
+                        '0 12px 30px -10px rgba(0,0,0,0.8), 0 0 24px 0 rgba(255,255,255,0.08)',
+                      borderColor: 'rgba(255, 255, 255, 0.3)',
                     }
-                    transition={{ duration: 0.15 }}
-                    className="text-xs font-kanit font-medium text-zinc-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl transition-colors hover:bg-white/10 hover:text-white cursor-default"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+              }
+              transition={{ duration: 0.25 }}
+              className="h-full rounded-3xl p-6 sm:p-7 bg-zinc-950/60 border border-white/10 backdrop-blur-xl transition-all duration-300 hover:bg-zinc-900/60 flex flex-col justify-between gap-6 group"
+            >
+              <div>
+                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
+                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform">
+                    {getCategoryIcon(category.category)}
+                  </div>
+                  <h3 className="text-lg font-kanit font-bold uppercase tracking-wider text-white">
+                    {category.category}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <motion.span
+                      key={skill}
+                      whileHover={
+                        shouldReduceMotion
+                          ? undefined
+                          : {
+                              y: -2,
+                              scale: 1.05,
+                              boxShadow: '0 0 16px rgba(255, 255, 255, 0.25)',
+                              borderColor: 'rgba(255, 255, 255, 0.45)',
+                            }
+                      }
+                      transition={{ duration: 0.15 }}
+                      className="text-xs font-kanit font-medium text-zinc-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl transition-colors hover:bg-white/10 hover:text-white cursor-default"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </Magnet>
         ))}
       </motion.div>
     </section>
