@@ -22,7 +22,7 @@ export const projectsData: ProjectItem[] = [
     category: "Personal",
     status: "Active / Prototype",
     isConcept: false,
-    liveUrl: "https://edu-skills-ai.vercel.app/",
+    liveUrl: "https://edu-skills-xi.vercel.app/",
     description: "AI-powered study planner: dashboard, subjects & exams, timetable, progress, quizzes, AI insights, smart notes, reminders and an AI study assistant. Tasks auto-complete when the related quiz is passed.",
     stack: ["HTML", "CSS", "JavaScript", "Firebase", "AI API"],
     images: [
