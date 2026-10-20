@@ -40,7 +40,7 @@ I'm B. Padma Hrushikesh, a diploma student in Computer Engineering from Rayadurg
 
 ## Projects (ordered; each needs 3 screenshots, supplied by me)
 01 · EduSkills AI — Smart Study Planner · Personal · Status: Active / Prototype
-   Live: https://edu-skills-ai.vercel.app/
+   Live: https://edu-skills-xi.vercel.app/
    Desc: AI-powered study planner: dashboard, subjects & exams, timetable, progress, quizzes, AI insights, smart notes, reminders and an AI study assistant. Tasks auto-complete when the related quiz is passed.
    Stack: HTML, CSS, JavaScript, Firebase, AI API (provider not named; API keys stay server-side/private)
 02 · Spice Haven — Restaurant Website · Concept / Demo
