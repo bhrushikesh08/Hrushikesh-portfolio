@@ -96,6 +96,24 @@ export const projectsData: ProjectItem[] = [
       "/images/projects/portfolio-v1/2.png",
       "/images/projects/portfolio-v1/3.png"
     ]
+  },
+  {
+    number: "06",
+    slug: "digital-token-system",
+    title: "Digital Token System",
+    subtitle: "Hospital Queue Management",
+    category: "Web Application",
+    status: "Active",
+    isConcept: false,
+    liveUrl: "https://hospital-token-system-henna.vercel.app/",
+    repoUrl: "https://github.com/MANOJHRUSHI/hospital-token-system",
+    description: "A modern, real-time role-based digital token queue and healthcare management system for OPD clinics and hospitals with dedicated dashboards for Admin, Doctor, Receptionist, and Patient.",
+    stack: ["React", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL"],
+    images: [
+      "/images/projects/hospital-token-system/1.png",
+      "/images/projects/hospital-token-system/2.png",
+      "/images/projects/hospital-token-system/3.png"
+    ]
   }
 ];
 

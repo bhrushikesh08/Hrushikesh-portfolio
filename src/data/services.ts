@@ -95,5 +95,5 @@ export const servicesData: ServiceItem[] = [
     ],
     tags: ["Digital Presence", "Startup Solutions", "Platform Growth"],
     discussText: "Contact via HM TECHNOLOGIES"
-  }
+  },
 ];
