@@ -60,9 +60,9 @@ I'm B. Padma Hrushikesh, a diploma student in Computer Engineering from Rayadurg
    Stack: HTML, CSS, JavaScript, GSAP, GitHub Pages
 06 · Digital Token System — Hospital Queue Management · Personal · Status: Active
    Live: https://hospital-token-system-henna.vercel.app/
-   Repo: https://github.com/MANOJHRUSHI/hospital-token-system
    Desc: Real-time, role-based digital token queue and healthcare management system for OPD clinics and multi-specialty hospitals with dedicated dashboards for Administrator, Doctor, Receptionist, and Patient.
    Stack: React, Vite, Tailwind CSS, Supabase, PostgreSQL
+
 
 
 ## Services (6, in order; no prices, no turnaround promises)

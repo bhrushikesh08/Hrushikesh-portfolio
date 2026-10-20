@@ -106,7 +106,6 @@ export const projectsData: ProjectItem[] = [
     status: "Active",
     isConcept: false,
     liveUrl: "https://hospital-token-system-henna.vercel.app/",
-    repoUrl: "https://github.com/MANOJHRUSHI/hospital-token-system",
     description: "A modern, real-time role-based digital token queue and healthcare management system for OPD clinics and hospitals with dedicated dashboards for Admin, Doctor, Receptionist, and Patient.",
     stack: ["React", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL"],
     images: [
