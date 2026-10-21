@@ -19,19 +19,28 @@ export const Marquee: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Extract all project screenshots
-  const allTiles: MarqueeTileItem[] = projectsData.flatMap((project) =>
-    project.images.map((img, idx) => ({
-      id: `${project.slug}-${idx}`,
-      projectTitle: project.title,
-      category: project.category,
-      status: project.status,
-      imageSrc: img,
-      altText: `${project.title} preview screenshot ${idx + 1}`,
-      liveUrl: project.liveUrl,
-      repoUrl: project.repoUrl,
-    }))
-  );
+  // Interleave project screenshots round-robin by screenshot index:
+  // Add screenshot 1 for every project in project order, then screenshot 2, then screenshot 3 (skip missing)
+  const maxImagesPerProject = Math.max(...projectsData.map((p) => p.images.length), 0);
+  const allTiles: MarqueeTileItem[] = [];
+
+  for (let imgIdx = 0; imgIdx < maxImagesPerProject; imgIdx++) {
+    for (const project of projectsData) {
+      const img = project.images[imgIdx];
+      if (img) {
+        allTiles.push({
+          id: `${project.slug}-${imgIdx}`,
+          projectTitle: project.title,
+          category: project.category,
+          status: project.status,
+          imageSrc: img,
+          altText: `${project.title} preview screenshot ${imgIdx + 1}`,
+          liveUrl: project.liveUrl,
+          repoUrl: project.repoUrl,
+        });
+      }
+    }
+  }
 
   // Triple items to guarantee seamless scrolling (> 21 items)
   // Set 1 is the primary accessible set; sets 2 & 3 are marked as duplicate for accessibility
