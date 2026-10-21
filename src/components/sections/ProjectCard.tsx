@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectItem } from '@/types';
 import { LiveProjectButton } from '@/components/ui';
@@ -33,9 +34,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     setCurrentImgIndex(idx);
   };
 
-  // Keyboard navigation for lightbox
+  // Keyboard navigation & body scroll lock for lightbox
   useEffect(() => {
     if (!isLightboxOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -48,7 +52,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
   }, [isLightboxOpen, imagesCount]);
 
   return (
@@ -210,103 +217,122 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </article>
 
-      {/* High-Resolution Screenshot Lightbox Modal */}
-      <AnimatePresence>
-        {isLightboxOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-xl"
-            onClick={() => setIsLightboxOpen(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full max-h-[90vh] bg-zinc-950 border border-white/20 rounded-3xl overflow-hidden flex flex-col shadow-2xl shadow-black"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-zinc-900/60">
-                <div className="flex items-center gap-3">
-                  <span className="font-kanit font-extrabold text-white text-lg">
-                    {project.title}
-                  </span>
-                  <span className="text-xs uppercase tracking-wider text-zinc-400 font-kanit font-medium">
-                    Screenshot {currentImgIndex + 1} of {imagesCount}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsLightboxOpen(false)}
-                  className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="Close preview"
+      {/* High-Resolution Screenshot Lightbox Modal (Portal to body for perfect viewport positioning) */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {isLightboxOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-6 bg-black/95 backdrop-blur-2xl"
+                onClick={() => setIsLightboxOpen(false)}
+              >
+                <motion.div
+                  initial={{ scale: 0.96, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.96, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative w-full h-[100dvh] sm:h-auto sm:max-w-5xl sm:max-h-[90vh] bg-zinc-950 sm:border sm:border-white/20 sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl shadow-black"
                 >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Modal Image Display */}
-              <div className="relative flex-1 min-h-[300px] max-h-[75vh] flex items-center justify-center bg-black/50 p-2 sm:p-4 overflow-hidden">
-                <img
-                  src={project.images[currentImgIndex]}
-                  alt={`${project.title} high resolution preview ${currentImgIndex + 1}`}
-                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-xl"
-                />
-
-                {/* Prev / Next controls inside modal */}
-                {imagesCount > 1 && (
-                  <>
+                  {/* Modal Header */}
+                  <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b border-white/10 bg-zinc-900/80 backdrop-blur-md shrink-0">
+                    <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                      <span className="font-kanit font-extrabold text-white text-base sm:text-lg truncate">
+                        {project.title}
+                      </span>
+                      <span className="text-[11px] sm:text-xs uppercase tracking-wider text-zinc-400 font-kanit font-medium shrink-0">
+                        {currentImgIndex + 1} / {imagesCount}
+                      </span>
+                    </div>
                     <button
                       type="button"
-                      onClick={handlePrevImg}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-zinc-900/80 border border-white/20 text-white hover:scale-110 transition-transform"
-                      aria-label="Previous screenshot"
+                      onClick={() => setIsLightboxOpen(false)}
+                      className="p-2 rounded-full bg-white/10 border border-white/15 text-zinc-300 hover:text-white hover:bg-white/20 transition-all shrink-0 active:scale-95 focus:outline-none focus:ring-1 focus:ring-white"
+                      aria-label="Close preview"
                     >
-                      <ChevronLeft className="w-6 h-6" />
+                      <X className="w-5 h-5" />
                     </button>
-                    <button
-                      type="button"
-                      onClick={handleNextImg}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-zinc-900/80 border border-white/20 text-white hover:scale-110 transition-transform"
-                      aria-label="Next screenshot"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
-              </div>
+                  </div>
 
-              {/* Modal Footer Thumbnails */}
-              {imagesCount > 1 && (
-                <div className="px-6 py-3 border-t border-white/10 bg-zinc-900/40 flex items-center justify-center gap-3">
-                  {project.images.map((thumbUrl, idx) => (
-                    <button
-                      key={thumbUrl}
-                      type="button"
-                      onClick={(e) => handleSelectImg(e, idx)}
-                      className={`relative w-16 h-10 rounded-lg overflow-hidden border transition-all ${
-                        idx === currentImgIndex
-                          ? 'border-white scale-105 shadow-md shadow-white/20'
-                          : 'border-white/20 opacity-60 hover:opacity-100'
-                      }`}
-                    >
-                      <img
-                        src={thumbUrl}
-                        alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          </motion.div>
+                  {/* Modal Image Display - fills mobile screen cleanly without scrolling */}
+                  <div className="relative flex-1 min-h-0 flex items-center justify-center bg-black/60 p-2 sm:p-4 overflow-hidden touch-none">
+                    <motion.img
+                      key={project.images[currentImgIndex]}
+                      src={project.images[currentImgIndex]}
+                      alt={`${project.title} high resolution preview ${currentImgIndex + 1}`}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.18 }}
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.2}
+                      onDragEnd={(_, info) => {
+                        if (info.offset.x > 50) {
+                          setCurrentImgIndex((prev) => (prev - 1 + imagesCount) % imagesCount);
+                        } else if (info.offset.x < -50) {
+                          setCurrentImgIndex((prev) => (prev + 1) % imagesCount);
+                        }
+                      }}
+                      className="max-h-full max-w-full w-auto h-auto object-contain rounded-lg sm:rounded-xl select-none"
+                    />
+
+                    {/* Prev / Next controls inside modal */}
+                    {imagesCount > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handlePrevImg}
+                          className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 sm:bg-zinc-900/80 border border-white/20 text-white hover:scale-110 active:scale-95 transition-transform backdrop-blur-md focus:outline-none focus:ring-1 focus:ring-white"
+                          aria-label="Previous screenshot"
+                        >
+                          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleNextImg}
+                          className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 sm:bg-zinc-900/80 border border-white/20 text-white hover:scale-110 active:scale-95 transition-transform backdrop-blur-md focus:outline-none focus:ring-1 focus:ring-white"
+                          aria-label="Next screenshot"
+                        >
+                          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Modal Footer Thumbnails */}
+                  {imagesCount > 1 && (
+                    <div className="px-4 py-2.5 sm:px-6 sm:py-3 border-t border-white/10 bg-zinc-900/60 shrink-0 flex items-center justify-center gap-2 sm:gap-3">
+                      {project.images.map((thumbUrl, idx) => (
+                        <button
+                          key={thumbUrl}
+                          type="button"
+                          onClick={(e) => handleSelectImg(e, idx)}
+                          className={`relative w-14 h-9 sm:w-16 sm:h-10 rounded-lg overflow-hidden border transition-all ${
+                            idx === currentImgIndex
+                              ? 'border-white scale-105 shadow-md shadow-white/20'
+                              : 'border-white/20 opacity-50 hover:opacity-100'
+                          }`}
+                        >
+                          <img
+                            src={thumbUrl}
+                            alt={`Thumbnail ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </>
   );
 };
+
 
