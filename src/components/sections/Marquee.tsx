@@ -98,7 +98,8 @@ interface MarqueeCardProps {
 
 const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
   const [currentSrc, setCurrentSrc] = React.useState<string>(tile.imageSrc);
-  const targetUrl = tile.liveUrl || tile.repoUrl || '#projects';
+  const isSmartCollegeNetwork = tile.projectTitle === 'Smart College Network';
+  const targetUrl = isSmartCollegeNetwork ? undefined : (tile.liveUrl || tile.repoUrl || '#projects');
 
   const handleError = () => {
     if (currentSrc.endsWith('.webp')) {
@@ -108,13 +109,8 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
     }
   };
 
-  return (
-    <a
-      href={targetUrl}
-      target={targetUrl.startsWith('http') ? '_blank' : undefined}
-      rel={targetUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-      className="group relative w-[300px] h-[195px] sm:w-[380px] sm:h-[245px] md:w-[420px] md:h-[270px] shrink-0 rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 block"
-    >
+  const cardContent = (
+    <>
       {/* Background Graphic / Screenshot */}
       <img
         src={currentSrc}
@@ -134,9 +130,11 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
         <span className="text-[10px] sm:text-xs font-kanit uppercase tracking-wider font-medium text-zinc-300 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
           {tile.category}
         </span>
-        <span className="p-1.5 rounded-full bg-white/10 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <ExternalLink className="w-3.5 h-3.5" />
-        </span>
+        {targetUrl && (
+          <span className="p-1.5 rounded-full bg-white/10 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <ExternalLink className="w-3.5 h-3.5" />
+          </span>
+        )}
       </div>
 
       {/* Bottom Information */}
@@ -148,6 +146,24 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
           {tile.status}
         </span>
       </div>
+    </>
+  );
+
+  const cardClasses =
+    "group relative w-[300px] h-[195px] sm:w-[380px] sm:h-[245px] md:w-[420px] md:h-[270px] shrink-0 rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 block";
+
+  if (!targetUrl) {
+    return <div className={cardClasses}>{cardContent}</div>;
+  }
+
+  return (
+    <a
+      href={targetUrl}
+      target={targetUrl.startsWith('http') ? '_blank' : undefined}
+      rel={targetUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+      className={cardClasses}
+    >
+      {cardContent}
     </a>
   );
 };
