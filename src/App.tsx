@@ -10,6 +10,7 @@ import { Skills } from '@/components/sections/Skills';
 import { Education } from '@/components/sections/Education';
 import { Contact } from '@/components/sections/Contact';
 import { NotFound } from '@/components/sections/NotFound';
+import { Spotlight } from '@/components/motion';
 import { isRouteValid, VALID_SECTION_IDS, ValidSectionId } from '@/utils/routeValidator';
 
 export const App: React.FC = () => {
@@ -69,7 +70,8 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-white flex flex-col selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-[#0C0C0C] text-white flex flex-col selection:bg-white selection:text-black relative">
+      <Spotlight />
       <Navbar />
       <main className="flex-1">
         <Hero />

@@ -4,46 +4,42 @@ import {
   ArrowUp,
   Github,
   Linkedin,
-  Instagram,
-  Twitter,
+  MessageSquare,
+  Phone,
   Mail,
 } from 'lucide-react';
+import { contactData } from '@/data/contact';
 
-/**
- * SOCIAL MEDIA ACCOUNTS CONFIGURATION
- * ------------------------------------
- * Replace the placeholder URLs below with your official social account links.
- */
 export const SOCIALS = [
   {
     name: 'GitHub',
-    href: 'https://github.com/bhrushikesh08',
+    href: contactData.github,
     icon: Github,
     ariaLabel: 'Visit Hrushikesh on GitHub (opens in new tab)',
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/bheemanapalli-hrushikesh-525a77312/',
+    href: contactData.linkedin,
     icon: Linkedin,
     ariaLabel: 'Connect with Hrushikesh on LinkedIn (opens in new tab)',
   },
   {
-    name: 'Instagram',
-    href: 'https://instagram.com/hrushikesh_bh', // <-- EDIT: Replace with your Instagram URL
-    icon: Instagram,
-    ariaLabel: 'Follow Hrushikesh on Instagram (opens in new tab)',
-  },
-  {
-    name: 'X (Twitter)',
-    href: 'https://x.com/PLACEHOLDER_TWITTER', // <-- EDIT: Replace with your X/Twitter URL
-    icon: Twitter,
-    ariaLabel: 'Follow Hrushikesh on X / Twitter (opens in new tab)',
+    name: 'WhatsApp',
+    href: contactData.whatsapp,
+    icon: MessageSquare,
+    ariaLabel: 'Chat with Hrushikesh on WhatsApp (opens in new tab)',
   },
   {
     name: 'Email',
-    href: 'mailto:bheemanapallih@gmail.com',
+    href: `mailto:${contactData.email}`,
     icon: Mail,
     ariaLabel: 'Send an email to Hrushikesh (opens mail app)',
+  },
+  {
+    name: 'Phone',
+    href: `tel:${contactData.phone}`,
+    icon: Phone,
+    ariaLabel: 'Call Hrushikesh directly',
   },
 ];
 
