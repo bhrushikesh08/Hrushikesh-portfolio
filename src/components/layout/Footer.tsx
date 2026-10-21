@@ -37,7 +37,7 @@ export const SOCIALS = [
   },
   {
     name: 'Phone',
-    href: `tel:${contactData.phone}`,
+    href: `tel:${contactData.phoneDial}`,
     icon: Phone,
     ariaLabel: 'Call Hrushikesh directly',
   },

@@ -12,6 +12,7 @@ interface MarqueeTileItem {
   altText: string;
   liveUrl?: string;
   repoUrl?: string;
+  isDuplicate?: boolean;
 }
 
 export const Marquee: React.FC = () => {
@@ -33,7 +34,12 @@ export const Marquee: React.FC = () => {
   );
 
   // Triple items to guarantee seamless scrolling (> 21 items)
-  const tripledTiles = [...allTiles, ...allTiles, ...allTiles];
+  // Set 1 is the primary accessible set; sets 2 & 3 are marked as duplicate for accessibility
+  const tripledTiles: MarqueeTileItem[] = [
+    ...allTiles.map((t) => ({ ...t, isDuplicate: false })),
+    ...allTiles.map((t) => ({ ...t, isDuplicate: true })),
+    ...allTiles.map((t) => ({ ...t, isDuplicate: true })),
+  ];
 
   // Distribute into Row 1 and Row 2
   const row1Tiles = tripledTiles.filter((_, i) => i % 2 === 0);
@@ -153,7 +159,15 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
     "group relative w-[300px] h-[195px] sm:w-[380px] sm:h-[245px] md:w-[420px] md:h-[270px] shrink-0 rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 block";
 
   if (!targetUrl) {
-    return <div className={cardClasses}>{cardContent}</div>;
+    return (
+      <div
+        className={cardClasses}
+        tabIndex={tile.isDuplicate ? -1 : undefined}
+        aria-hidden={tile.isDuplicate ? 'true' : undefined}
+      >
+        {cardContent}
+      </div>
+    );
   }
 
   return (
@@ -161,6 +175,8 @@ const MarqueeCard: React.FC<MarqueeCardProps> = ({ tile }) => {
       href={targetUrl}
       target={targetUrl.startsWith('http') ? '_blank' : undefined}
       rel={targetUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+      tabIndex={tile.isDuplicate ? -1 : undefined}
+      aria-hidden={tile.isDuplicate ? 'true' : undefined}
       className={cardClasses}
     >
       {cardContent}

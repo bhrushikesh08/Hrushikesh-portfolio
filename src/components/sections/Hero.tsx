@@ -5,7 +5,16 @@ import { FadeIn, Magnet, AnimatedText } from '@/components/motion';
 import { ContactButton } from '@/components/ui';
 
 export const Hero: React.FC = () => {
+  const [imgSrc, setImgSrc] = useState('/images/portrait.webp');
   const [imgError, setImgError] = useState(false);
+
+  const handleImgError = () => {
+    if (imgSrc.endsWith('.webp')) {
+      setImgSrc('/images/portrait.png');
+    } else {
+      setImgError(true);
+    }
+  };
 
   return (
     <section
@@ -106,11 +115,11 @@ export const Hero: React.FC = () => {
                 <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-b from-zinc-800 to-zinc-950 flex items-center justify-center">
                   {!imgError ? (
                     <img
-                      src="/images/portrait.png"
+                      src={imgSrc}
                       alt={identityData.displayName}
                       width={500}
                       height={625}
-                      onError={() => setImgError(true)}
+                      onError={handleImgError}
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       loading="eager"
                     />

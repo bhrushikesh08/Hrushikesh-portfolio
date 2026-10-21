@@ -16,6 +16,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const [imgError, setImgError] = useState(false);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [resolvedSrcs, setResolvedSrcs] = useState<Record<string, string>>({});
+
+  const getImageSrc = (url: string) => resolvedSrcs[url] || url;
+
+  const handleImgLoadError = (url: string) => {
+    if (url.endsWith('.webp')) {
+      setResolvedSrcs((prev) => ({ ...prev, [url]: url.replace('.webp', '.png') }));
+    } else {
+      setImgError(true);
+    }
+  };
 
   const imagesCount = project.images.length;
 
@@ -94,13 +105,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {!imgError ? (
               <>
                 <img
-                  key={project.images[currentImgIndex]}
-                  src={project.images[currentImgIndex]}
+                  key={getImageSrc(project.images[currentImgIndex])}
+                  src={getImageSrc(project.images[currentImgIndex])}
                   alt={`${project.title} preview screenshot ${currentImgIndex + 1} of ${imagesCount}`}
                   width={600}
                   height={375}
                   loading="lazy"
-                  onError={() => setImgError(true)}
+                  onError={() => handleImgLoadError(getImageSrc(project.images[currentImgIndex]))}
                   className="w-full h-full object-cover object-top transition-all duration-500"
                 />
 
@@ -260,9 +271,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   {/* Modal Image Display - fills mobile screen cleanly without scrolling */}
                   <div className="relative flex-1 min-h-0 flex items-center justify-center bg-black/60 p-2 sm:p-4 overflow-hidden touch-none">
                     <motion.img
-                      key={project.images[currentImgIndex]}
-                      src={project.images[currentImgIndex]}
+                      key={getImageSrc(project.images[currentImgIndex])}
+                      src={getImageSrc(project.images[currentImgIndex])}
                       alt={`${project.title} high resolution preview ${currentImgIndex + 1}`}
+                      onError={() => handleImgLoadError(getImageSrc(project.images[currentImgIndex]))}
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.18 }}
@@ -317,8 +329,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                           }`}
                         >
                           <img
-                            src={thumbUrl}
+                            src={getImageSrc(thumbUrl)}
                             alt={`Thumbnail ${idx + 1}`}
+                            onError={() => handleImgLoadError(getImageSrc(thumbUrl))}
                             className="w-full h-full object-cover"
                           />
                         </button>

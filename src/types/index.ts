@@ -30,6 +30,7 @@ export interface ContactData {
   linkedin: string;
   whatsapp: string;
   phone: string;
+  phoneDial: string;
   resumeUrl: string;
   mapUrl: string;
 }

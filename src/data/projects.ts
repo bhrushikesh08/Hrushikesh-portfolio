@@ -42,9 +42,9 @@ export const projectsData: ProjectItem[] = [
     description: "Responsive restaurant website with filterable menu, cart-to-WhatsApp ordering, table reservation form with validation, offers and gallery. Concept demo to showcase capabilities for business clients.",
     stack: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
     images: [
-      "/images/projects/spice-haven/1.png",
-      "/images/projects/spice-haven/2.png",
-      "/images/projects/spice-haven/3.png"
+      "/images/projects/spice-haven/1.webp",
+      "/images/projects/spice-haven/2.webp",
+      "/images/projects/spice-haven/3.webp"
     ]
   },
   {
@@ -75,9 +75,9 @@ export const projectsData: ProjectItem[] = [
     description: "Simulated college network designed in Cisco Packet Tracer to practice topology design and TCP/IP concepts.",
     stack: ["Cisco Packet Tracer", "TCP/IP", "Network Topology"],
     images: [
-      "/images/projects/smart-college-network/1.png",
-      "/images/projects/smart-college-network/2.png",
-      "/images/projects/smart-college-network/3.png"
+      "/images/projects/smart-college-network/1.webp",
+      "/images/projects/smart-college-network/2.webp",
+      "/images/projects/smart-college-network/3.webp"
     ]
   },
   {

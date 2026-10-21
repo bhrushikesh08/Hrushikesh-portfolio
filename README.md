@@ -2,14 +2,14 @@
 
 Personal portfolio for **B. Padma Hrushikesh** — Web Developer, UI/UX Designer, Mobile App Developer, Vibecoder & Freelancer.
 
-![Portfolio Preview](/public/og.png)
+![Portfolio Preview](/public/og.jpg)
 
 ## ✨ Features
 
 - **Single-page scroll** with smooth section navigation
 - **Magnetic cursor effects** and scroll-driven animations (Framer Motion)
 - **Parallax marquee** showcase with image fallback (`.webp` → `.png` → `.jpg`)
-- **Sticky-stacking project cards** with formula-based scaling
+- **Responsive project grid** with multi-screenshot carousel and lightbox modal
 - **Glassmorphic navbar** with mobile drawer
 - **Dark theme** with Kanit typography and gradient text effects
 - **Fully responsive** — tested at 375 / 768 / 1440 px
@@ -26,7 +26,7 @@ Personal portfolio for **B. Padma Hrushikesh** — Web Developer, UI/UX Designer
 | Styling   | [Tailwind CSS](https://tailwindcss.com) ^3.4.1 |
 | Motion    | [Framer Motion](https://www.framer.com/motion/) ^12.38.0 |
 | Icons     | [Lucide React](https://lucide.dev) ^0.344.0 |
-| Font      | [Kanit](https://fonts.google.com/specimen/Kanit) 300–900 |
+| Font      | [Kanit](https://fonts.google.com/specimen/Kanit) 300–800 |
 
 ## 📁 Project Structure
 
@@ -45,7 +45,7 @@ src/
 public/
 ├── images/           # Project screenshots, portrait
 ├── favicon.svg
-├── og.png
+├── og.jpg
 ├── resume.pdf
 ├── robots.txt
 └── sitemap.xml

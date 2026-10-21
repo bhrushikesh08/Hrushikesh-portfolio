@@ -122,7 +122,7 @@ export const Services: React.FC = () => {
                   <div className="flex items-center gap-4 sm:gap-6 min-w-0">
                     {/* Service Number */}
                     <span
-                      className={`font-kanit font-black text-xl sm:text-2xl transition-colors shrink-0 ${
+                      className={`font-kanit font-extrabold text-xl sm:text-2xl transition-colors shrink-0 ${
                         isExpanded ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-400'
                       }`}
                     >

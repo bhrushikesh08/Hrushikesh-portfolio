@@ -219,7 +219,7 @@ export const Contact: React.FC = () => {
               <div className="p-6 rounded-3xl bg-zinc-950/70 border border-white/10 backdrop-blur-xl flex flex-col items-start text-left justify-between h-full gap-6">
                 <div className="flex items-center gap-3">
                   <a
-                    href={`tel:${contactData.phone}`}
+                    href={`tel:${contactData.phoneDial}`}
                     className="p-3 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
                     aria-label="Direct Phone Call"
                   >
@@ -241,7 +241,7 @@ export const Contact: React.FC = () => {
                     {contactMeta.locationLabel}
                   </span>
                   <a
-                    href={`tel:${contactData.phone}`}
+                    href={`tel:${contactData.phoneDial}`}
                     className="text-sm sm:text-base font-kanit font-bold text-white hover:underline block"
                   >
                     {contactData.phone}
